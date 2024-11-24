@@ -6,7 +6,7 @@ module.exports = {
   testRegex: '/__tests__/.*(\\.|/)(test|spec)\\.[jt]sx?$',
 
   testEnvironmentOptions: {
-    html: '<html lang="fr"></html>',
+    html: '<html lang="fr"><body></body></html>',
     url: 'https://lorem.ipsum/',
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
   },
