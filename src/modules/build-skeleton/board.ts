@@ -2,7 +2,8 @@ import {
   ID_ROOT_CHESSBOARD_DEFAULT,
   DATA_ATTR_ROW_CHESSBOARD,
   DATA_ATTR_COLUMN_CHESSBOARD,
-  DATA_ATTR_COORDINATE_SQUARE
+  DATA_ATTR_COORDINATE_SQUARE,
+  SQUARE_CLASSNAME
 } from "./../constant"
 
 import numeric2coordinate from "../utils/numeric2coordinate"
@@ -40,6 +41,7 @@ export default function board(): HTMLDivElement {
 
       column.setAttribute(DATA_ATTR_COLUMN_CHESSBOARD, columnValue.toString())
       column.setAttribute(DATA_ATTR_COORDINATE_SQUARE, coordinate)
+      column.classList.add(SQUARE_CLASSNAME)
 
       row.appendChild(column)
     }

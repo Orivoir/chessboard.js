@@ -64,6 +64,7 @@ export default async function pieces({
       __tests__
     })
 
+    square.appendChild(image)
     images.push(image)
   }
 

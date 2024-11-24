@@ -3,7 +3,8 @@ import {
   PIECES_REAL_SIZE_PX,
   MAPPING_PIECE_TYPE_NAME,
   PIECES_WHITE_IMAGES_CLASSNAME,
-  PIECES_BLACK_IMAGES_CLASSNAME
+  PIECES_BLACK_IMAGES_CLASSNAME,
+  DATA_ATTR_PIECE_TYPE
 } from "../constant";
 import type { PieceType } from "./../constant"
 
@@ -49,6 +50,8 @@ export default async function piece({
 
     image.classList.add(`chessboard-piece-${pieceType}`)
 
+    image.setAttribute(DATA_ATTR_PIECE_TYPE, pieceType)
+
     image.width = width || PIECES_REAL_SIZE_PX
     image.height = height || PIECES_REAL_SIZE_PX
     image.alt = `chess piece ${MAPPING_PIECE_TYPE_NAME[pieceType]}`
@@ -57,7 +60,7 @@ export default async function piece({
       image.src = target
     }
 
-    if(!!__tests__) {
+    if(__tests__) {
       resolve({ev: new Event("load"), image})
     }
 
@@ -82,10 +85,12 @@ export default async function piece({
         }
 
         if(fallbackTarget) {
-          // load image has failed
-          // recall piece function with fallback target as new target (should use default theme piece then possible)
-          // next call has non fallback target because if fallback target failed us infinite loop recursive with fallback target as target 
-          // piece({..., target: fallbackTarget, fallbackTarget}) => error => call: piece({..., target: fallbackTarget, fallbackTarget}) => error => ...  
+          /*
+           * load image has failed
+           * recall piece function with fallback target as new target (should use default theme piece then possible)
+           * next call has non fallback target because if fallback target failed us infinite loop recursive with fallback target as target 
+           * piece({..., target: fallbackTarget, fallbackTarget}) => error => call: piece({..., target: fallbackTarget, fallbackTarget}) => error => ...  
+           */
           resolve(await piece({
             target: fallbackTarget,
             pieceType,
