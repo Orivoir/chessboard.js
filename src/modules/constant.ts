@@ -1,3 +1,38 @@
+export type EventSquareClick = {
+  square: EventDataSquare
+}
+
+export type EventMove = {
+
+  from: EventDataSquare;
+  to: EventDataSquare;
+
+  piece: EventDataPiece;
+
+  isTakeMove: boolean;
+
+  pieceToTake?: EventDataPiece;
+
+  isGranted: (isGrantedMove: boolean) => void;
+}
+
+export type EventNewActivePiece = {
+  square: EventDataSquare;
+  piece: EventDataPiece;
+
+  isGranted: (isGrantedActivePiece: boolean) => void;
+}
+
+export type EventDataPiece = {
+  element: HTMLImageElement;
+  type: PieceType;
+}
+
+export type EventDataSquare = {
+  element: HTMLDivElement;
+  coordinate: SquareType;
+}
+
 export type ThemePiecesType = 
   "3d_chesskid" | "3d_plastic" | "3d_staunton" |
   "3d_wood" | "8_bit" | "alpha" | 
@@ -42,6 +77,10 @@ export const DATA_ATTR_COLUMN_CHESSBOARD = "data-column-chessboard"
 
 export const DATA_ATTR_COORDINATE_SQUARE = "data-coordinate-square"
 
+export const DATA_ATTR_ACTIVE_PIECE = "data-piece-active"
+
+export const DATA_ATTR_PIECE_TYPE = "data-piece-type"
+
 /**
  * @description theme pieces name concatenate to constant `BASE_URL_PIECES_IMAGES_CDN` for get image
  * @constant THEME_PIECES_DEFAULT
@@ -50,9 +89,13 @@ export const THEME_PIECES_DEFAULT: ThemePiecesType = "alpha"
 
 export const BASE_URL_PIECES_IMAGES_CDN = "https://www.unpkg.com/scraping-chess.com-pieces-theme@1.0.0/assets"
 
+export const SQUARE_CLASSNAME = "chessboard-square"
+
 export const PIECES_IMAGES_EXTENSION = ".png"
 
 export const PIECES_IMAGES_CLASSNAME = "chessboard-piece"
+
+export const PIECE_ACTIVE_CLASSNAME = "chessboard-piece-active"
 
 export const PIECES_WHITE_IMAGES_CLASSNAME = "chessboard-white-piece"
 
@@ -126,4 +169,10 @@ export const MAPPING_PIECE_TYPE_NAME: {[type in PieceType]: string} = {
   wp: "white pawn",
   wq: "white queen",
   wr: "white rook"
+}
+
+export const MAPPING_CUSTOM_EVENTS_NAME = {
+  nonIntentSquareClick: "chessboard square click",
+  moveIntent: "chessboard move",
+  activePieceIntent: "chessboard active piece"
 }
