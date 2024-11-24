@@ -19,6 +19,10 @@
     "type": "git",
     "url": "https://github.com/orivoir/chessboard.js.com"
   },
+  "bugs": {
+    "url": "https://github.com/Orivoir/chessboard.js/issues",
+    "email": "sam.gabor@hotmail.com"
+  },
   "keywords": [],
   "author": "Samuel GABORIEAU <sam.gabor@hotmail.com> (https://github.com/orivoir)",
   "license": "ISC",
