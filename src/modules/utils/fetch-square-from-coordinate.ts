@@ -1,6 +1,5 @@
 import type { SquareType, RowType } from "../constant";
 import {
-  DATA_ATTR_COORDINATE_SQUARE,
   MAPPING_ROW_ALPHA_NUMERIC
 } from "../constant"
 import extractSquare from "./extract-squares";
