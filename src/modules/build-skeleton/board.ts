@@ -1,8 +1,11 @@
 import {
   ID_ROOT_CHESSBOARD_DEFAULT,
   DATA_ATTR_ROW_CHESSBOARD,
-  DATA_ATTR_COLUMN_CHESSBOARD
+  DATA_ATTR_COLUMN_CHESSBOARD,
+  DATA_ATTR_COORDINATE_SQUARE
 } from "./../constant"
+
+import numeric2coordinate from "../utils/numeric2coordinate"
 
 /**
  * @description build HTML content of chessboard, and provide root element 
@@ -30,7 +33,13 @@ export default function board(): HTMLDivElement {
 
       const columnValue = j + 1
 
+      const coordinate = numeric2coordinate({
+        row: rowValue,
+        column: columnValue
+      })
+
       column.setAttribute(DATA_ATTR_COLUMN_CHESSBOARD, columnValue.toString())
+      column.setAttribute(DATA_ATTR_COORDINATE_SQUARE, coordinate)
 
       row.appendChild(column)
     }
